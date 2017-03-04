@@ -16,6 +16,7 @@ import { HeroService } from './hero.service';
 export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   heroes: Hero[];
+  errorMessage:string;
 
   constructor(private heroService:HeroService,private router:Router){
 
@@ -30,7 +31,11 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroesSlowly().then(heroes=>this.heroes=heroes);
+    this.heroService.getHeroes()
+            .subscribe(
+            value => this.heroes = value,
+            error => this.errorMessage = <any>error);
+    console.log("Herolar",this.heroes);
   }
 
   gotoDetail(){
