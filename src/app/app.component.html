@@ -1,8 +1,12 @@
-<h1>{{title}}</h1>
+<h1>{{'title' | translate}}</h1>
 
 <nav>
-    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+    <a routerLink="/dashboard" routerLinkActive="active">{{'dashboard' | translate}}</a>
+    <a routerLink="/heroes" routerLinkActive="active">{{'heroes' | translate}}</a>
+     <select (change)="changeLanguage($event.target.value)">
+        <option  value="tr">Türkçe</option>
+        <option  value="en">English</option>
+    </select> 
 </nav>
 
 <router-outlet></router-outlet>

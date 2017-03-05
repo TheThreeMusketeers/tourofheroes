@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TranslateService} from 'ng2-translate';
 
 @Component({
     selector:'app-root',
@@ -7,5 +8,18 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent{
-     title = "Tour of heroes";
+     
+     constructor(private translate:TranslateService){
+         translate.addLangs(["tr","en"]);
+         translate.setDefaultLang("en");
+
+         //let browserLang=translate.getBrowserLang();
+         //translate.use(browserLang.match(/tr|en/)?browserLang:"tr");
+
+     }
+
+     changeLanguage(lang:string){
+         console.log(lang);
+         this.translate.use(lang);
+     }
 }

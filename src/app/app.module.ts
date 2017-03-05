@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { Http,HttpModule } from '@angular/http';
+import {TranslateModule} from 'ng2-translate';
+import { TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 import { AppComponent } from './app.component';
 import { HeroDetailComponent} from './hero-detail.component';
@@ -27,7 +29,12 @@ import {AppRoutingModule} from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+            deps: [Http]
+        })
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]
