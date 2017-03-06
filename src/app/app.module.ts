@@ -11,6 +11,7 @@ import { HeroesComponent } from './heroes.component';
 import { DashboardComponent } from './dashboard.component';
 import { HeroService } from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
+import {HeroFormComponent} from './hero-form.component';
 
 
 import {AppRoutingModule} from './app-routing.module';
@@ -23,18 +24,15 @@ import {AppRoutingModule} from './app-routing.module';
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    TranslateModule.forRoot({
-            provide: TranslateLoader,
-            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
-            deps: [Http]
-        })
+    TranslateModule.forRoot()
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]
