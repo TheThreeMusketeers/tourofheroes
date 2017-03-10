@@ -41,7 +41,7 @@ export class HeroesComponent implements OnInit {
   add(name:string){
     name=name.trim();
     if(!name) {return;}
-    this.heroService.create(name)
+    this.heroService.create(this.selectedHero)
     .then(hero=>{
       this.heroes.push(hero);
       console.log("Bu da yeni kaydedilen Hero:",JSON.stringify(hero));

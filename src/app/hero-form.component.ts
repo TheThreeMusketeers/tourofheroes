@@ -20,8 +20,15 @@ export class HeroFormComponent{
 
     submitted=false;
 
+    newRecord=false;
+
     newHero() {
-    this.model = new Hero(2, '', '');
+        this.model = new Hero(2, '', '');
+        this.newRecord=true;
+    }
+
+    editHero(){
+        this.newRecord=false;
     }
 
     onSubmit(){
@@ -30,7 +37,17 @@ export class HeroFormComponent{
     }
 
     save(): void {
-        this.heroService.update(this.model);
+        if(this.newRecord)
+        {
+            console.log("create");
+            this.heroService.create(this.model);
+        }
+        else
+        {
+            console.log("update");
+            this.heroService.update(this.model);
+        }
+            
     }
 
     goBack(){
